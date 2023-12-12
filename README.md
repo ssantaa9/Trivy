@@ -1,7 +1,8 @@
 ## Prerrequisitos
 
-1. Ejecutar el script desde linux
-2. Tener instalado Trivy.
+1. Ejecutar el script desde linux.
+2. Tener python3.
+3. Tener instalado Trivy.
 
 ## Ejecutar el script
 
