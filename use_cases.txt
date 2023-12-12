@@ -1,4 +1,4 @@
-* Escanear imágenes del docker image.
-* Output en formato
+* Escanear imágenes en docker image.
+* Output en formato json.
 
-MENOS URGENTE: Escanear manifiestos de kubernetes
+MENOS URGENTE: Escanear manifiestos de kubernetes.
