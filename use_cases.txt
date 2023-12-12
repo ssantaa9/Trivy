@@ -2,5 +2,3 @@
 * Output en formato
 
 MENOS URGENTE: Escanear manifiestos de kubernetes
-
-test
