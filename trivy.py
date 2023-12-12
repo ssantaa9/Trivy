@@ -4,14 +4,14 @@ from re import compile   # Caracteres permitidos como entrada
 import argparse     # Manejo de argumentos
 
 # Función para sanitizar los argumentos y caracteres permitidos
-def sanitize(input):
-    input_sanitized = quote(input)  # Escapar caracteres especiales
-    input_valid = compile(r'^[a-zA-Z0-9.:]*$')  # Acepta letras, números, punto y/o dos puntos.
-    # Verificar que la entrada solo contenga los caracteres permitidos
-    if not input_valid.match(input):
-        raise ValueError("Entrada no válida. Debe contener solo letras, números, punto y/o dos puntos.")
+# def sanitize(input):
+#     input_sanitized = quote(input)  # Escapar caracteres especiales
+#     input_valid = compile(r'^[a-zA-Z0-9.:]*$')  # Acepta letras, números, punto y/o dos puntos.
+#     # Verificar que la entrada solo contenga los caracteres permitidos
+#     if not input_valid.match(input):
+#         raise ValueError("Entrada no válida. Debe contener solo letras, números, punto y/o dos puntos.")
     
-    return input_sanitized
+#     return input_sanitized
 
 # Ejecutar el comando de Trivy y guardar resultado
 def scan_image(img):
@@ -28,7 +28,7 @@ def scan_image(img):
 # Sanitizar y escanear
 def scan(img):
     try:
-        sanitize(img)   # Sanitizar el argumento y verificar caracteres permitidos
+        img = quote(img)   # Sanitizar el argumento
         scan_image(img) # Escanear una imagen
         
     except ValueError as e:
@@ -37,13 +37,10 @@ def scan(img):
 def main():
     # Definir el parser para agregar argumentos con su respectiva descripción
     parser = argparse.ArgumentParser(description='Escanea imágenes docker y retorna un archivo json con los resultados.')
-    
     # Definir la bandera '--image' que tome un argumento
     parser.add_argument('--image', type=str, help='Nombre de la imagen a escanear.')
-    
     # Guardar los argumentos
     args = parser.parse_args()
-
     # Verificar que se haya introducido argumentos
     if not any(vars(args).values()):
         parser.print_help() # Si no se ingresaron argumentos, imprimir el menú help
